@@ -1,11 +1,6 @@
-import React from 'react'
 
-function order.actions() {
-  return (
-    <div>
 
-    </div>
-  )
+export default function orderActions() {
+
 }
 
-export default order.actions

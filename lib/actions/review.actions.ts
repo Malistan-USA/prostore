@@ -1,11 +1,5 @@
-import React from 'react'
+const reviewActions = () => {
 
-function review.actions() {
-  return (
-    <div>
-
-    </div>
-  )
 }
 
-export default review.actions
+export default reviewActions;

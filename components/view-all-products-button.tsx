@@ -1,11 +1,7 @@
-import React from 'react'
-
-function view-all - products - button() {
+const ViewAllProductsButton = () => {
   return (
-    <div>
-
-    </div>
-  )
+    <div>View All Products Button Component</div>
+  );
 }
 
-export default view - all - products - button
+export default ViewAllProductsButton;

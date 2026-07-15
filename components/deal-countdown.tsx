@@ -1,11 +1,7 @@
-import React from 'react'
-
-function deal-countdown() {
+const DealCountDown = () => {
   return (
-    <div>
-
-    </div>
-  )
+    <div>Deal count down component</div>
+  );
 }
 
-export default deal - countdown
+export default DealCountDown;

@@ -1,11 +1,25 @@
-import React from 'react'
+'use server';
 
-function product.actions() {
-  return (
-    <div>
+import { prisma } from "@/db/prisma";
+import { convertToPlainObject } from "../utils";
+import { LATEST_PRODUCTS_LIMIT } from "../constants";
 
-    </div>
-  )
+
+export async function getLatestProducts() {
+  const data = await prisma.product.findMany({
+    take: LATEST_PRODUCTS_LIMIT,
+    orderBy: { createdAt: 'desc' }
+  });
+
+  return data.map((product) => ({
+    ...convertToPlainObject(product),
+    price: product.price.toString(),
+    rating: Number(product.rating),
+  }));
 }
 
-export default product.actions
+export async function getProductBySlug(slug: string) {
+  return await prisma.product.findFirst({
+    where: { slug: slug }
+  })
+}

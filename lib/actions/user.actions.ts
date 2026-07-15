@@ -1,11 +1,5 @@
-import React from 'react'
+const userActions = () => {
 
-function user.actions() {
-  return (
-    <div>
-
-    </div>
-  )
 }
 
-export default user.actions
+export default userActions;

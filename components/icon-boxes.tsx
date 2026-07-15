@@ -1,11 +1,7 @@
-import React from 'react'
-
-function icon-boxes() {
+const IconBoxes = () => {
   return (
-    <div>
-
-    </div>
-  )
+    <div>IconBoxes Component</div>
+  );
 }
 
-export default icon - boxes
+export default IconBoxes;
