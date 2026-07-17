@@ -23,35 +23,55 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { type: 'password' },
       },
       async authorize(credentials) {
-        if (credentials == null) return null;
+        if (!credentials) {
+          console.log("❌ No credentials received");
+          return null;
+        }
 
-        // Find user in database
-        const user = await prisma.user.findFirst({
+        console.log("📧 Email entered:", credentials.email);
+
+        const user = await prisma.user.findUnique({
           where: {
             email: credentials.email as string,
           },
         });
 
-        // Check if user exists and if the password matches
-        if (user && user.password) {
-          const isMatch = await compare(
-            credentials.password as string,
-            user.password
-          );
+        console.log("👤 User found:", !!user);
 
-          // If password is correct, return user
-          if (isMatch) {
-            return {
-              id: user.id,
-              name: user.name,
-              email: user.email,
-              role: user.role,
-            };
-          }
+        if (!user) {
+          console.log("❌ No user found with that email");
+          return null;
         }
-        // If user does not exist or password does not match return null
-        return null;
-      },
+
+        if (!user.password) {
+          console.log("❌ User has no password");
+          return null;
+        }
+
+        console.log("📧 Database email:", user.email);
+        console.log("🔒 Password hash:", user.password);
+
+        const isMatch = await compare(
+          credentials.password as string,
+          user.password
+        );
+
+        console.log("🔑 Password matches:", isMatch);
+
+        if (!isMatch) {
+          console.log("❌ Password is incorrect");
+          return null;
+        }
+
+        console.log("✅ Login successful");
+
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        };
+      }
     }),
   ],
   callbacks: {

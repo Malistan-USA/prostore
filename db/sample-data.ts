@@ -7,14 +7,14 @@ const sampleData = {
         {
             name: 'John',
             email: 'admin@email.com',
-            password: hashSync('12345', 10),
+            password: hashSync('12345ddd', 10),
             role: 'admin'
         },
 
         {
             name: 'Naeem',
             email: 'aaa@email.com',
-            password: hashSync('12345', 10),
+            password: hashSync('12345aaa', 10),
             role: 'user'
         }
     ],

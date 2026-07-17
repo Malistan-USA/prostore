@@ -9,20 +9,28 @@ const signInWithCredentials = async (
     _prevState: unknown,
     formData: FormData
 ) => {
+    console.log("🔥 signInWithCredentials called");
+
     try {
         const credentials = signInFormSchema.parse({
-            email: formData.get('email'),
-            password: formData.get('password'),
+            email: formData.get("email"),
+            password: formData.get("password"),
         });
 
-        await signIn('credentials', credentials);
+        console.log("🔥 Parsed credentials:", credentials);
+
+        await signIn("credentials", credentials);
 
         return {
             success: true,
-            message: 'Signed in successfully',
+            message: "Signed in successfully",
         };
     } catch (error) {
-        if (isRedirectError(error)) throw error;
+        if (isRedirectError(error)) {
+            throw error;
+        }
+
+        console.error("Sign in error:", error);
 
         return {
             success: false,
