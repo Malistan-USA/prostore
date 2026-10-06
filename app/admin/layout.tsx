@@ -12,7 +12,7 @@ export default function AdminLayout({
 }>) {
   return (
     <>
-      <div className='flex flex-col'>
+      <div className='flex flex-col mt-5'>
         <div className='border-b container mx-auto'>
           <div className='flex items-center h-16 px-4'>
             <Link href='/' className='w-22'>
@@ -21,6 +21,7 @@ export default function AdminLayout({
                 height={48}
                 width={48}
                 alt={APP_NAME}
+                className='mr-5'
               />
             </Link>
             <MainNav />

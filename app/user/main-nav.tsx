@@ -1,10 +1,38 @@
-import React from 'react'
+'use client';
+import React from 'react';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
-function MainNav() {
+
+const links = [
+  {
+    title: 'Profile',
+    href: '/user/profile'
+  },
+  {
+    title: 'Orders',
+    href: '/user/orders'
+  }
+]
+
+
+function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
+
+  const pathname = usePathname();
+
   return (
-    <div>
-      MainNav
-    </div>
+    <nav className={cn('flex items-center space-x-4 lg:spce-x-6', className)}
+      {...props}
+    >
+      {links.map((item) => (
+        <Link key={item.href} href={item.href} className={cn(
+          'test-sm font-medium transition-colors hover:text-primary', pathname.includes(item.href) ? '' : 'text-muted-foreground'
+        )}>
+          {item.title}
+        </Link>
+      ))}
+    </nav>
   )
 }
 

@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import ModeToggle from "./mode-toggle";
 import Link from "next/link";
-import { EllipsisVertical, ShoppingCart, User } from "lucide-react";
+import { EllipsisVertical, ShoppingCart } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
+import UserButton from "./user-button";
 
 function Menu() {
   return (
@@ -15,11 +16,7 @@ function Menu() {
           </Link>
         </Button>
 
-        <Button asChild>
-          <Link href="/sign-in">
-            <User /> Sign In
-          </Link>
-        </Button>
+        <UserButton />
       </nav>
       <nav className='flex md:hidden w-full max-w-xs gap-1'>
         <Sheet>
@@ -33,11 +30,7 @@ function Menu() {
                 <ShoppingCart /> Cart
               </Link>
             </Button>
-            <Button asChild>
-              <Link href='/sign-in'>
-                <User /> Sign In
-              </Link>
-            </Button>
+            <UserButton />
             <SheetDescription>
 
             </SheetDescription>
